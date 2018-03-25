@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}学生座位设置{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+    #formlist {
+      padding: 30px;
+    }
+    #sbutton {
+      width: 500px;
+      display: inline-block;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<form action="/setup/position" method="POST" id="formlist" class="text-center">
+  {% for position in positions %}
+    <!-- <div><p>{{position.name}} <b>{{position.position}}</b></p></div> -->
+    <div class="text-center">
+      <span>{{position.name}}</span>
+      <input name="{{position.xh}}" value="{{position.position}}" placeholder="{{position.position}}">
+    </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-default" id="sbutton">提交</button>
+</form>
+{% endblock %}

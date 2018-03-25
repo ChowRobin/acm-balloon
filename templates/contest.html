@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}比赛{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+    #formlist {
+      border: 1px solid;
+    }
+    #submitButton {
+      width: 500px;
+      display: inline-block;
+      margin-top: 100px;
+    }
+    #msg {
+      height: 50px;
+    }
+  </style> 
+ {% endblock %}
+{% block content %}
+<h1 class="text-center">{{contestname}}</h1>
+<form action="/contest/{{contestid}}" method="POST" id="formlist" class="text-center">
+  {% for msg in msglist %}
+    <div class="text-center" id="msg">
+      <input type="checkbox" name="{{msg.xh}}" value="{{msg.id}}"><h3 style="display:inline-block">{{msg.name}}({{msg.position}})获得{{msg.color}}气球<span style="color:red">{% if msg.fb %}（第一滴血）{% endif %}</span></h3>
+    </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-default" id="submitButton">刷新</button>
+</form>
+{% endblock %}

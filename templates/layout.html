@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="/static/images/logo.ico">    
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+  </head>
+  <style>
+    #head {
+      background-color: #ebf3f7;
+    }
+  </style>
+<body>
+  <div class="page-header text-center" id="head">
+    <!-- <img src="/static/images/icpclogo.png" height="30px" width="30px"> -->
+    <h1 class="">ACM气球控制系统 <small>安徽大学</small></h1>
+  </div>
+  <ul class="nav nav-pills nav-justified">
+      <li role="presentation" class="{{p1}}"><a href="/">比赛选择</a></li>
+      <li role="presentation" class="{{p2}}"><a href="/setup/position">座位设置</a></li>
+      <li role="presentation" class="{{p3}}"><a href="/setup/balloon">气球设置</a></li>
+  </ul>
+  <div id="content">{% block content %}{% endblock %}</div>
+  <footer class="">
+    <small>
+      2018 © Robin. All Rights Reserved.
+    </small>
+  </footer>
+</body>

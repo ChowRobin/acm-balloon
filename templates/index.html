@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}安徽大学acm校赛气球控制系统{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+    .row {
+      padding: 40px;
+    }
+    #contest {
+      margin-left: 200px;
+      margin-right: 200px;
+      padding: 30px;
+    }
+  </style>
+  <script language="text/javascript">
+    function clear() {
+      alert("hello!")
+      if(confirm("清空缓存将使当前比赛数据清空！")) {
+        window.location = '/clear'
+      }
+    }
+  </script>
+{% endblock %}
+{% block content %}
+  {% for contest in contests %}
+    <div class="list-group text-center" id="contest">
+      <a href="/contest/{{contest.id}}" class="list-group-item col-md-9">{{contest.name}}</a>
+      <a href="/delcontest/{{contest.id}}" class="btn bth-danger col-md-3">删除</a>
+    </div>
+  {% endfor %}
+  <form action="/addcontest" method="POST" id="contestform">
+    <div class="text-center col-md-12">
+      <span>新建比赛</span>
+      <input name="cname", class="" placeholder="比赛名称">
+      <input name="cid", class="" placeholder="比赛序号">
+      <button type="submit" class="btn btn-default">确认新建</button>
+    </div>
+  </form>
+  <a class="btn btn-default" href="/clear">清空缓存</a>
+{% endblock %}
